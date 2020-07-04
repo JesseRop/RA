@@ -26,7 +26,7 @@ ui = navbarPage(title = "Synovial atlas of Macrophages in RA", theme = "amp_cust
                                          tabPanel("Labelling populations", 
                                                   wellPanel(
                                                       #sliderInput(inputId = "clusters_res", label = strong("Louvain algorithm resolution"), value = res1, min = res1, max = res2, step = diff_res, round = F),
-                                                      withSpinner(plotOutput("labelled_umap"))
+                                                      withSpinner(plotOutput("labelled_umap", width = "700px", height = "600px"))
                                                       
                                                       # )
                                                       ,
@@ -42,7 +42,9 @@ ui = navbarPage(title = "Synovial atlas of Macrophages in RA", theme = "amp_cust
                                      wellPanel(style = "background:#385A4F",
                                                tags$hr(),
                                                tags$p(style = "font-family:Arial;color:white",
-                                                      paste("Adjusting resolution (0.15, 0.25, 0.35, 0.45 or 0.55) to set the clustering granularity. This option allows the sub-division of clusters further into sub-populations and the subsequent interrogation of differential expression. Labelling of cell populations can then be done based on top cluster markers in the 'Cluster marker' table on the left.")
+                                                      # paste("Adjusting resolution (0.15, 0.25, 0.35, 0.45 or 0.55) to set the clustering granularity. This option allows the sub-division of clusters further into sub-populations and the subsequent interrogation of differential expression. Labelling of cell populations can then be done based on top cluster markers in the 'Cluster marker' table on the left.")
+                                                      paste("Labelling of cell populations can then be done based on top cluster markers in the 'Cluster marker' table on the left.")
+                                                      
                                                       
                                                ),
                                                tags$hr()
@@ -206,10 +208,10 @@ server = function(input, output) {
     output$all_groups = renderPlot({
         
         if(length(unique(umap_cluster_modified_ren_reo()[["FinalClusters"]][["FinalClusters"]])) == length(cluster.colours)){
-            DimPlot(umap_cluster_modified_ren_reo(), reduction = "umap", split.by = "group", label.size = 6, order = T, cols = cluster.colours)
+            DimPlot(umap_cluster_modified_ren_reo(), reduction = "umap", split.by = "group", order = T, cols = cluster.colours, pt.size = 2)
             
         } else {
-            DimPlot(umap_cluster_modified_ren_reo(), reduction = "umap", split.by = "group", label.size = 6, order = T)
+            DimPlot(umap_cluster_modified_ren_reo(), reduction = "umap", split.by = "group", order = T, pt.size = 2)
         }
         
     })
@@ -382,10 +384,10 @@ server = function(input, output) {
     output$labelled_umap = renderPlot({
         
         if(length(unique(umap_cluster_modified_ren_reo()[["FinalClusters"]][["FinalClusters"]])) == length(cluster.colours)){
-            DimPlot(umap_cluster_modified_ren_reo(), label = TRUE, label.size = 6, order = T, cols = cluster.colours)
+            DimPlot(umap_cluster_modified_ren_reo(), order = T, cols = cluster.colours, pt.size = 2)
             
         } else {
-            DimPlot(umap_cluster_modified_ren_reo(), order = T)
+            DimPlot(umap_cluster_modified_ren_reo(), order = T, pt.size = 2)
         }
         
     })
@@ -418,7 +420,7 @@ server = function(input, output) {
         
         plots <- VlnPlot(stim_markers(), features = input$de_genes, split.by = "group", group.by = "celltype", pt.size = 0, combine = FALSE, multi.group = T, cols = group.cols, assay = "RNA") 
         for(i in 1:length(plots)) {
-            plots[[i]] <- plots[[i]] + stat_summary(fun.y= median, geom='point', size = 2, colour = "black", position = position_dodge(0.9))
+            plots[[i]] <- plots[[i]] + stat_summary(fun.y= median, geom='point', size = 2, colour = "black", position = position_dodge(0.9)) + scale_fill_manual(values=group.cols) 
         }
         CombinePlots(plots)
         

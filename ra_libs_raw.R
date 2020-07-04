@@ -27,8 +27,8 @@ library(DT)
 # setwd("/home/jr345y/ra_devt/")
 
 ##Reading in the list of precomputed Seurat objects (Resolution 0.15 0.25&0.35, 0.45&0.55 computed separately read in and combined then written to disk and )
-alveri = readRDS("alivernini.8k.rds")
-alveri = list(alveri)
+alveri = list(readRDS("alivernini.8k.rds"))
+# alveri = list(alveri)
 # ra_macrophage_combined_umap_list_res<-readRDS("ra_macrophage_combined_umap_list_res.rds")
 
 ##Reading in the list of precomputed table of cluster markers

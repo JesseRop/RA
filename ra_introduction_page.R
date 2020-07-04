@@ -14,10 +14,10 @@ tabPanel("About",
                    HTML("
 <h1>Welcome</h1>
 <p>
-Here, you can explore the single-cell RNA expression in macrophage subsets isolated from individual at different stages of rheumatoid arthritis (RA) compared to healthy individuals.
-</p>
+Here, you can explore our single-cell RNA sequencing data to investigate the phenotypic spectrum of synovial tissue macrophage during development and resolution of rheumatoid arthritis (RA). 
+Analyses were performed using the Seurat pipeline and custom scripts which are available upon request. In this web application we use a random subset of 8000 cells for faster computation. Further details can be found in our paper summarized below which you should cite if you use our data.</p>
 <p>
-The analysis was carried out using the Seurat pipeline for differential expression. Further details can be found in our paper summarized below which you should cite if you use our data.
+
 </p>
 
 <div class='citation'>
@@ -56,8 +56,7 @@ strategy for RA treatment.</p>
 <div class='citation'>
 <p> The results are displayed in 2 sections
 <ul>
-<li><a onclick = 'fakeClick(\"Cluster adjustment\")'> Clustering</a> - Allows flexibility in increasing the number of clusters by increasing the resolution. 
-This results in the sub-division of clusters characterized in our <a href='https://www.google.com' target='_blank'> paper </a> into sub-populations.</li>
+<li><a onclick = 'fakeClick(\"Cluster adjustment\")'> Clustering</a> - Allows cluster visualization and exploration of top cluster markers.</li>
 <li><a onclick = 'fakeClick(\"Differential expression\")'> Differential expression (DE)</a> - Comparison of gene expression in macrophages from healthy, UPA, Naive RA, Resistant RA and Remission RA using
 parameters specified in our <a href='https://www.google.com' target='_blank'> paper </a> (i.e the first 12 Principal components and 0.5 as the clustering resolution). </li>
 </ul>
@@ -67,7 +66,7 @@ parameters specified in our <a href='https://www.google.com' target='_blank'> pa
 <div style='border:thin solid black ; padding:30px ; margin:30px'>
 <figure>  
 
-<img src='Alivernini_Fig2_200511.png' alt='Results' style='width:100%;'>
+<img src='ra_scrna_multiplot_final.png' alt='Results' style='width:100%;'>
 <figcaption>scRNAseq defines heterogeneity within MerTK<sup>pos</sup> /CD206<sup>pos</sup> and
 MerTK neg /CD206 neg STM populations. <b>(a)</b> UMAP of 9 STM clusters identified by scRNAseq
 analysis. <b>(a-h)</b> show data from Healthy (n=4), UPA (n=4), naïve-active RA (n=5), treatment-
@@ -84,7 +83,7 @@ with Tukey’s correction. Precise p-values in Supplementary Figure 3a which can
 </figure>
 </div>
 
-<footer align = 'center' style = 'position:absolute; bottom:80; width:95%; height:20px; padding: 10px; z-index: 200; background-color:PowderBlue;'> <hr></hr> <p>This web-app was developed by <a href='https://https://www.gla.ac.uk/researchinstitutes/iii/staff/?webapp=staffcontact&action=person&id=4edfe8ec8a95' target='_blank'> Jesse Rop </a> under the supervision of <a href='https://https://www.gla.ac.uk/researchinstitutes/iii/staff/thomasdanotto/' target='_blank'> Dr Thomas Otto </a> and with the assistance of <a href='https://www.linkedin.com/in/lucy-macdonald-07248b177/?originalSubdomain=uk' target='_blank'> Lucy Macdonald </a> and <a href='https://https://www.gla.ac.uk/researchinstitutes/iii/staff/?webapp=staffcontact&action=person&id=49d8ebe38396' target='_blank'> Scott Arkinson </a>. Further acknowledgements on the generation of the data hosted in the app can be found in our <a href='https://www.google.com' target='_blank'> paper </a>.</p> <p> The code used to develop the app can be found <a href='https://github.com/JesseRop/' target='_blank'> here </a>. For any queries or suggestions kindly <a href='mailto:ThomasDan.Otto@glasgow.ac.uk' target='_blank'> contact us</a>.</p>
+<footer align = 'center' style = 'position:absolute; bottom:80; width:95%; height:20px; padding: 10px; z-index: 200; background-color:PowderBlue;'> <hr></hr> <p>This web-app (version 1.01) was developed by <a href='https://https://www.gla.ac.uk/researchinstitutes/iii/staff/?webapp=staffcontact&action=person&id=4edfe8ec8a95' target='_blank'> Jesse Rop </a> under the supervision of <a href='https://https://www.gla.ac.uk/researchinstitutes/iii/staff/thomasdanotto/' target='_blank'> Dr Thomas Otto </a> and with the assistance of <a href='https://www.linkedin.com/in/lucy-macdonald-07248b177/?originalSubdomain=uk' target='_blank'> Lucy Macdonald </a> and <a href='https://https://www.gla.ac.uk/researchinstitutes/iii/staff/?webapp=staffcontact&action=person&id=49d8ebe38396' target='_blank'> Scott Arkinson </a>. Further acknowledgements on the generation of the data hosted in the app can be found in our <a href='https://www.google.com' target='_blank'> paper </a>.</p> <p> The code used to develop the app can be found <a href='https://github.com/JesseRop/' target='_blank'> here </a>. For any queries or suggestions kindly <a href='mailto:ThomasDan.Otto@glasgow.ac.uk' target='_blank'> contact us</a>. An updated version coming soon.</p>
 </footer>"))
          
 )
